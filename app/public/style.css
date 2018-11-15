@@ -1,0 +1,28 @@
+body {
+ background-image: url(./images/A289085-XLARGE.jpg);
+}
+
+#title {
+    color: rgb(131, 26, 26);
+    font-size: 50px;
+    text-align: center;
+    background-color: antiquewhite;
+    padding: 15px;
+    margin-right: 160px;
+    margin-left: 160px;
+}
+
+button {
+    background-color: rgb(63, 149, 230);
+    border: 0px;
+    font-size: 35px;
+    margin-left: 550px;
+}
+
+
+#questions {
+    color: rgb(131, 26, 26);
+    background-color: antiquewhite;
+    margin-right: 78%;
+    padding: 5px;
+}
