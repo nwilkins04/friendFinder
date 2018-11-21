@@ -18,8 +18,8 @@
     <input type="photo" required>
 
     <container>
-        <h4 id=questions style="color: rgb(131, 26, 26); background-color: antiquewhite; margin-right: 78%; padding: 5px;">You enjoy relaxing indoors</h4>
-        <select class="chosen">
+        <h4 id="question1" style="color: rgb(131, 26, 26); background-color: antiquewhite; margin-right: 78%; padding: 5px;">You enjoy relaxing indoors</h4>
+        <select class="chosen1">
             <option value>Options</option>
             <option value="1">1 (strongly disagree)</option>
             <option value="2">2</option>
@@ -28,8 +28,8 @@
             <option value="5">5 (strongly agree)</option>
         </select>
 
-        <h4 id=questions style="color: rgb(131, 26, 26); background-color: antiquewhite; margin-right: 78%; padding: 5px;">You needs lots of exercise</h4> 
-        <select class="chosen">
+        <h4 id="question2" style="color: rgb(131, 26, 26); background-color: antiquewhite; margin-right: 78%; padding: 5px;">You needs lots of exercise</h4> 
+        <select class="chosen2">
             <option value>Options</option>
             <option value="1">1 (strongly disagree)</option>
             <option value="2">2</option>
@@ -38,8 +38,8 @@
             <option value="5">5 (strongly agree)</option>
         </select>
 
-        <h4 id=questions style="color: rgb(131, 26, 26); background-color: antiquewhite; margin-right: 78%; padding: 5px;">You requires lots of food to keep you happy</h4>
-        <select class="chosen">
+        <h4 id="question3" style="color: rgb(131, 26, 26); background-color: antiquewhite; margin-right: 78%; padding: 5px;">You requires lots of food to keep you happy</h4>
+        <select class="chosen3">
             <option value>Options</option>
             <option value="1">1 (strongly disagree)</option>
             <option value="2">2</option>
@@ -48,8 +48,8 @@
             <option value="5">5 (strongly agree)</option>
         </select>
 
-        <h4 id=questions style="color: rgb(131, 26, 26); background-color: antiquewhite; margin-right: 78%; padding: 5px;">People love you</h4>
-        <select class="chosen">
+        <h4 id="question4" style="color: rgb(131, 26, 26); background-color: antiquewhite; margin-right: 78%; padding: 5px;">People love you</h4>
+        <select class="chosen4">
             <option value>Options</option>
             <option value="1">1 (strongly disagree)</option>
             <option value="2">2</option>
@@ -58,8 +58,8 @@
             <option value="5">5 (strongly agree)</option>
         </select>
 
-        <h4 id=questions style="color: rgb(131, 26, 26); background-color: antiquewhite; margin-right: 78%; padding: 5px;">You require a lot of attention</h4>
-        <select class="chosen">
+        <h4 id="question5" style="color: rgb(131, 26, 26); background-color: antiquewhite; margin-right: 78%; padding: 5px;">You require a lot of attention</h4>
+        <select class="chosen5">
             <option value>Options</option>
             <option value="1">1 (strongly disagree)</option>
             <option value="2">2</option>
@@ -69,7 +69,7 @@
         </select>
 
         <div class="w3-container">
-            <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black">Submit</button>
+            <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black" id="submit">Submit</button>
             <div id="id01" class="w3-modal">
               <div class="w3-modal-content">
                 <div class="w3-container">
@@ -83,3 +83,35 @@
     </container>
 </body>
 </html>
+
+
+<script type="text/javascript">
+
+    //should grab the users answers from survey
+    $("#submit").on("click", function(event) {
+        event.preventDefault();
+
+        //collect answers and display as number(integer)
+        var newResult = {
+            answer1: parseInt($(".chosen1").val().trim()),
+            answer2: parseInt($(".chosen2").val().trim()),
+            answer3: parseInt($(".chosen3").val().trim()),
+            answer4: parseInt($(".chosen4").val().trim()),
+            answer5: parseInt($(".chosen5").val().trim()),
+        };
+
+        //add answers together
+        var sum = (newResult.answer1 + newResult.answer2 + newResult.answer3 + newResult.answer4 + newResult.answer5);
+        console.log(sum)
+        
+
+        //then for loop through dogArray to find appropriate match
+            
+        
+        //then display in modal 
+
+        //if all works then add more questions, oops!
+
+    });
+
+</script>
