@@ -69,13 +69,14 @@
         </select>
 
         <div class="w3-container">
-            <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black" id="submit">Submit</button>
+            <button class="w3-button w3-black" id="submit">Submit</button>
             <div id="id01" class="w3-modal">
               <div class="w3-modal-content">
                 <div class="w3-container">
                   <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
                   <p><h1>Results!</h1></p>
-                  <p>Your perfect dog match is: </p>
+                  <p>Your perfect dog match is: <span id="dogMatch"></span></p>
+                  <img src="#" id="dogImage">
                 </div>
               </div>
             </div>
@@ -92,20 +93,30 @@
         event.preventDefault();
 
         //collect answers and display as number(integer)
-        var newResult = {
-            answer1: parseInt($(".chosen1").val().trim()),
-            answer2: parseInt($(".chosen2").val().trim()),
-            answer3: parseInt($(".chosen3").val().trim()),
-            answer4: parseInt($(".chosen4").val().trim()),
-            answer5: parseInt($(".chosen5").val().trim()),
-        };
+        var newResult = [
+             parseInt($(".chosen1").val().trim()),
+             parseInt($(".chosen2").val().trim()),
+             parseInt($(".chosen3").val().trim()),
+             parseInt($(".chosen4").val().trim()),
+             parseInt($(".chosen5").val().trim()),
+    ];
 
-        //add answers together
-        var sum = (newResult.answer1 + newResult.answer2 + newResult.answer3 + newResult.answer4 + newResult.answer5);
-        console.log(sum)
-        
+        $.ajax({
+            url:'/api/friends',
+            method:'POST',
+            data: {answers:newResult}
+        }).done(function(data,err) {
+                console.log(data);
+                //Here trigger modal
+                $('#dogMatch').text(data.match.name);
+                $('#dogImage').attr("src",data.match.photo);
+                $('#id01').css('display', 'block');
+                //document.getElementById('id01').style.display='block';
 
-        //then for loop through dogArray to find appropriate match
+            
+        });
+
+        //then for loop through dogArray?? to find appropriate match
             
         
         //then display in modal 
